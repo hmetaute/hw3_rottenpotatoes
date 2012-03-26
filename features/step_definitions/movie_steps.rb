@@ -1,3 +1,8 @@
+require 'uri'
+require 'cgi'
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+
 # Add a declarative step here for populating the DB with movies.
 
 Given /the following movies exist/ do |movies_table|
@@ -31,3 +36,12 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
 end
+
+When /^I check the "([^"]*)" checkbox$/ do |rating|
+  step %(I check "ratings_#{rating}")
+end
+
+
+
+
+
