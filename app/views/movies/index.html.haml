@@ -7,7 +7,7 @@
   Include: 
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating)
+    = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating), :class => 'rating_type'
   = submit_tag 'Refresh', :id => 'ratings_submit'
 
 %table#movies
@@ -20,8 +20,8 @@
   %tbody
     - @movies.each do |movie|
       %tr
-        %td= movie.title 
-        %td= movie.rating
+        %td{:class=> :movieTitle}= movie.title 
+        %td{:class=> :movieRating}= movie.rating
         %td= movie.release_date
         %td= link_to "More about #{movie.title}", movie_path(movie)
 
